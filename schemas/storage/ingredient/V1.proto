@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "shared/enums.proto";
+
+package ingredient;
+
+message Ingredient {
+  string id = 1;                        // Unique identifier
+  string name = 2;                      // Name of the ingredient
+  shared.Scale healthiness = 3;         // Level of healthiness {0-10}
+}

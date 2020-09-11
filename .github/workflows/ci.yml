@@ -1,0 +1,24 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+
+  check:
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Set up GitHub Actions"
+      uses: actions/checkout@v2
+    - name: "Install shell script utilities"
+      run: |
+        sudo apt-get --yes install $(cat packages)
+    - name: "Check shell scripts format"
+      run: |
+        make check

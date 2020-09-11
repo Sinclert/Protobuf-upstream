@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package shared;
+
+enum Scale {
+  NON_EXISTENT  = 0;
+  LOW_EXTREME   = 1;
+  LOW_VERY      = 2;
+  LOW           = 3;
+  AVERAGE_LOW   = 4;
+  AVERAGE       = 5;
+  AVERAGE_HIGH  = 6;
+  HIGH          = 7;
+  HIGH_VERY     = 8;
+  HIGH_EXTREME  = 9;
+  GOD_MODE      = 10;
+}

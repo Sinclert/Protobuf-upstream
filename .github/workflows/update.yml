@@ -1,0 +1,49 @@
+name: Update Downstream
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "schemas/**/*.proto"
+
+env:
+  GIT_USER_NAME: "Updater"
+  GIT_USER_EMAIL: "<>"
+  WRITABLE_DIR: "/tmp"
+
+jobs:
+  update-python-schemas:
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Set up GitHub Actions"
+      uses: actions/checkout@v2
+    - name: "Set up Python 3.8"
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+#    - name: "Set up SSH private key"
+#      uses: webfactory/ssh-agent@v0.4.0
+#      with:
+#        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#    - name: "Install shell script utilities"
+#      run: |
+#        sudo apt-get --yes install $(cat packages)
+#    - name: "Install language plugins"
+#      run: |
+#        make setup-plugins
+#    - name: "Download linux protoc compiler"
+#      run: |
+#        scripts/downloads/protoc_linux.sh $WRITABLE_DIR
+#    - name: "Generate Python schemas"
+#      run: |
+#        scripts/conversions/python.sh $WRITABLE_DIR compilers/linux/bin/protoc
+#    - name: "Update Python schemas"
+#      run: |
+#        git config --global user.name $GIT_USER_NAME
+#        git config --global user.email $GIT_USER_EMAIL
+#        scripts/integrations/python.sh $WRITABLE_DIR
+#    - name: "Release Python schemas"
+#      run: |
+#        scripts/releases/python.sh $WRITABLE_DIR
